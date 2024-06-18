@@ -37,8 +37,8 @@ jobs:
         git clone https://github.com/shenhunluo/iced_gif.git
         cargo build --release
         pwd
-        ls */* 
-        tar -zcf wx_dump_rs.tar.gz target/release/wx_dump_rs
+        ls target/release
+        tar -zcf wx_dump_rs.tar.gz target/release
 
     - name : upload binary
       uses: actions/upload-artifact@master
