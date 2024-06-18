@@ -1,0 +1,47 @@
+name: Rust
+
+on:
+  push:
+    tags:
+      - '**'
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    # install rust
+    - uses: actions/checkout@v2
+    - uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: stable
+        override: true
+    - run: rustup component add rustfmt clippy
+
+        # use cache
+    - name: Run sccache-cache
+      uses: mozilla-actions/sccache-action@v0.0.5    
+    
+    - name: Build
+      env:
+        SCCACHE_GHA_ENABLED: "true"
+        RUSTC_WRAPPER: "sccache"
+      run: |
+        cargo build --release
+        pwd
+        ls */* 
+        tar -zcf wx_dump_rs.tar.gz target/release/wx_dump_rs
+
+    - name : upload binary
+      uses: actions/upload-artifact@master
+      if: always()
+      with:
+        name: Task
+        path: wx_dump_rs.tar.gz
