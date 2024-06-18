@@ -34,7 +34,7 @@ jobs:
         SCCACHE_GHA_ENABLED: "true"
         RUSTC_WRAPPER: "sccache"
       run: |
-        git submodule update --init --remote
+        git clone https://github.com/shenhunluo/iced_gif.git
         cargo build --release
         pwd
         ls */* 
