@@ -39,16 +39,14 @@ jobs:
         git clone https://github.com/shenhunluo/iced_gif.git
         cargo build --release
         mv target/release/wx_dump_rs.exe target/release/wx_dump_rs_shell.exe
-        cargo build --release -F gui
-        mv target/release/wx_dump_rs.exe target/release/wx_dump_rs_gui.exe
         tar -zcf wx_dump_rs.tar.gz target/release/*.exe
 
-    - name : upload binary
-      uses: actions/upload-artifact@master
-      if: always()
-      with:
-        name: Task
-        path: wx_dump_rs.tar.gz
+    # - name : upload binary
+    #   uses: actions/upload-artifact@master
+    #   if: always()
+    #   with:
+    #     name: Task
+    #     path: wx_dump_rs.tar.gz
 
     - name: upload Release
       uses: softprops/action-gh-release@v2
@@ -56,4 +54,3 @@ jobs:
       with:
         files: |
           target/release/wx_dump_rs_shell.exe
-          target/release/wx_dump_rs_gui.exe
