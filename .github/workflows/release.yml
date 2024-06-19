@@ -50,7 +50,6 @@ jobs:
 
     - name: upload Release
       uses: softprops/action-gh-release@v2
-      if: startsWith(github.ref, 'refs/tags/')
       with:
         files: |
           target/release/wx_dump_rs_shell.exe
