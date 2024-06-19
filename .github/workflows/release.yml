@@ -13,11 +13,11 @@ jobs:
   build:
 
     runs-on: windows-latest
-    
+
     steps:
-    
+
     - uses: actions/checkout@v4
-    
+
     # install rust
     - name: Install minimal nightly with clippy and rustfmt
       uses: actions-rs/toolchain@v1
@@ -40,6 +40,7 @@ jobs:
         cargo build --release
         mv target/release/wx_dump_rs.exe target/release/wx_dump_rs_shell.exe
         tar -zcf wx_dump_rs.tar.gz target/release/*.exe
+        echo "${{github.ref}}"
 
     # - name : upload binary
     #   uses: actions/upload-artifact@master
