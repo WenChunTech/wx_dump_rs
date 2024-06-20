@@ -42,6 +42,7 @@ jobs:
         tar -zcf wx_dump_rs.tar.gz target/release/*.exe
         echo "${{github.ref}}"
         echo "${{runner.os}}-${{runner.arch}}"
+        echo "aaaaa"
 
     # - name : upload binary
     #   uses: actions/upload-artifact@master
