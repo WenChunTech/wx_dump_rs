@@ -56,4 +56,5 @@ jobs:
         files: |
           target/release/wx_dump_rs_shell.exe
         # draft: true
-        prerelease: true
+        # prerelease: true
+        generate_release_notes: true
