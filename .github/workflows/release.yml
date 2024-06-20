@@ -43,6 +43,7 @@ jobs:
         echo "${{github.ref}}"
         echo "${{runner.os}}-${{runner.arch}}"
         echo "aaaaa"
+        echo "bbbbb"
 
     # - name : upload binary
     #   uses: actions/upload-artifact@master
